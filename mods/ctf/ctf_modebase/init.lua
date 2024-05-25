@@ -108,8 +108,8 @@ minetest.register_on_mods_loaded(function()
 		if not ctf_modebase.modes[name].rounds then
 			ctf_settings.register("ctf_modebase:default_vote_"..name, {
 				type = "list",
-				description = "Match count vote for the mode '"..HumanReadable(name).."'",
-				list = {HumanReadable(name).." - Ask", "0", "1", "2", "3", "4", "5"},
+				description = "Match count vote for the mode '"..ctf_modebase.modes[name].name.."'",
+				list = {ctf_modebase.modes[name].name.." - Ask", "0", "1", "2", "3", "4", "5"},
 				_list_map = {"ask", 0, 1, 2, 3, 4, 5},
 				default = "1", -- "Ask"
 			})

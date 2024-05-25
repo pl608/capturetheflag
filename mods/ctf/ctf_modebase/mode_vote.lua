@@ -39,7 +39,7 @@ local function show_modechoose_form(player)
 			if not minetest.get_player_by_name(player) then return end
 
 			minetest.chat_send_player(player,
-				string.format("Voting for " .. new_mode .. ". Automatic vote: " .. vote_setting .. "\n" ..
+				string.format("Voting for " .. ctf_modebase.modes[new_mode].name .. ". Automatic vote: " .. vote_setting .. "\n" ..
 				"To change the automatic vote settings, go to the \"Settings\" tab of your inventory."))
 			player_vote(player, vote_setting)
 		end)
@@ -84,7 +84,7 @@ local function show_modechoose_form(player)
 
 	ctf_gui.old_show_formspec(player, "ctf_modebase:mode_select", {
 		size = {x = 8, y = i + 3.5},
-		title = "Mode: "..HumanReadable(new_mode),
+		title = "Mode: "..ctf_modebase.modes[new_mode].name,
 		description = "Please vote on how many matches you would like to play.\n" ..
 			"You can change your default vote for this mode via the Settings tab (in your inventory)",
 		header_height = 2.4,
@@ -183,7 +183,7 @@ function ctf_modebase.mode_vote.end_vote()
 
 	votes_result = string.format(
 		"Voting is over. The mode %s will be played for %d match%s\n%s",
-		HumanReadable(new_mode),
+		ctf_modebase.modes[new_mode].name,
 		average_vote,
 		average_vote == 1 and "" or "es",
 		votes_result:sub(1, -2)
