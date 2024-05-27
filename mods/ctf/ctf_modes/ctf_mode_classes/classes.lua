@@ -396,7 +396,7 @@ local function select_class(player, classname)
 	end
 
 	if ctf_modebase.current_mode == "classes" and dist_from_flag(player) <= 5 then
-		cooldowns:set(player, CLASS_SWITCH_COOLDOWN)
+		--cooldowns:set(player, CLASS_SWITCH_COOLDOWN)
 		classes.set(player, classname)
 	end
 end
