@@ -257,3 +257,16 @@ ochest_def.on_rightclick = nil
 
 minetest.register_node("ctf_map:chest_opened", ochest_def)
 minetest.register_node("ctf_map:chest", chest_def)
+
+local ind_water_def = minetest.registered_nodes['default:water_source']
+local ind_water_flowing_def = minetest.registered_nodes['default:water_flowing']
+
+ind_water_def.description = 'Indestructable Water with Indestructable Flow'
+
+ind_water_def.buildable_to = false
+ind_water_flowing_def.buildable_to = false
+
+ind_water_def.liquid_alternative_flowing = 'ctf_map:indestructable_water_flowing'
+
+minetest.register_node('ctf_map:indestructable_water_flowing', ind_water_flowing_def)
+minetest.register_node('ctf_map:indestructable_water_source_indestructable_flowing', ind_water_def)
